@@ -43,3 +43,8 @@ variable "lb_rule" {}
 variable "lb_probe_name" {}
 
 variable "ip_configuration_name" {}
+
+variable "bastion_host_name" {}
+variable "bastion_subnet_name" {}
+variable "bastion_pip_name" {}
+variable "bastion_subnet_address_prefixes" {}

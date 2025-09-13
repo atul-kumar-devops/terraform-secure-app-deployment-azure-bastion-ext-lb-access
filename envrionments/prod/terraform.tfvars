@@ -42,3 +42,9 @@ lb_rule              = "prod-lbrule-http-centralus-01"
 lb_probe_name        = "prod-probe-http-centralus-01"
 
 ip_configuration_name = "internal"
+
+bastion_pip_name = "prod-bastion-centralus-pip"
+
+bastion_subnet_name             = "AzureBastionSubnet"
+bastion_subnet_address_prefixes = ["10.0.0.128/26"]
+bastion_host_name               = "prod-bastion-centralus"

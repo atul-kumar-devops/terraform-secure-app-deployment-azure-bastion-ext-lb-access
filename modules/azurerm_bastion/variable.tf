@@ -3,7 +3,7 @@ variable "subnet_name" {
   description = "Azure Bastion Host Subnet Name"
 }
 
-variable "vnet_name" {
+variable "virtual_network_name" {
   type        = string
   description = "Load Balancer Virtual Network"
 }

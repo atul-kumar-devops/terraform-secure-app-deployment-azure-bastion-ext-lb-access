@@ -130,6 +130,7 @@ module "load_balancer" {
 }
 
 module "linux_virtual_machine_01_lb_association" {
+  depends_on            = [module.network_interface_01, module.load_balancer, ]
   source                = "../../modules/azurerm_nic_lb_association"
   nic_name              = var.nic_name_01
   resource_group_name   = var.resource_group_name
@@ -139,10 +140,39 @@ module "linux_virtual_machine_01_lb_association" {
 }
 
 module "linux_virtual_machine_02_lb_association" {
+  depends_on            = [module.network_interface_02, module.load_balancer, ]
   source                = "../../modules/azurerm_nic_lb_association"
   nic_name              = var.nic_name_02
   resource_group_name   = var.resource_group_name
   lb_name               = var.lb_name
   lb_backend_pool_name  = var.lb_backend_pool_name
   ip_configuration_name = var.ip_configuration_name
+}
+
+module "bastion_public_ip" {
+  depends_on          = [module.resource_group]
+  source              = "../../modules/azurerm_public_ip"
+  pip_name            = var.bastion_pip_name
+  location            = var.location
+  resource_group_name = var.resource_group_name
+}
+
+module "azure_bastion_subnet" {
+  depends_on           = [module.virtual_network]
+  source               = "../../modules/azurerm_subnet"
+  subnet_name          = var.bastion_subnet_name
+  virtual_network_name = var.virtual_network_name
+  resource_group_name  = var.resource_group_name
+  address_prefixes     = var.bastion_subnet_address_prefixes
+}
+
+module "azure_bastion_host" {
+  depends_on           = [module.azure_bastion_subnet, module.bastion_public_ip]
+  source               = "../../modules/azurerm_bastion"
+  bastion_host_name    = var.bastion_host_name
+  location             = var.location
+  resource_group_name  = var.resource_group_name
+  subnet_name          = var.bastion_subnet_name
+  virtual_network_name = var.virtual_network_name
+  pip_name             = var.bastion_pip_name
 }
