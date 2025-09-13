@@ -13,6 +13,11 @@ variable "lb_name" {
   description = "Load Balancer Name"
 }
 
+variable "ip_configuration_name" {
+  type        = string
+  description = "Load Balancer IP Configuration Name"
+}
+
 variable "lb_backend_pool_name" {
   type        = string
   description = "Load Balancer-Backend Pool Name"

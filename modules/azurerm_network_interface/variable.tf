@@ -3,7 +3,7 @@ variable "subnet_name" {
   description = "Subnet Name"
 }
 
-variable "vnet_name" {
+variable "virtual_network_name" {
   type        = string
   description = "Virtual Network Name"
 }
@@ -21,4 +21,9 @@ variable "location" {
 variable "resource_group_name" {
   type        = string
   description = "Resource Group Name"
+}
+
+variable "nsg_name" {
+  type        = string
+  description = "Network Security Group Name"
 }

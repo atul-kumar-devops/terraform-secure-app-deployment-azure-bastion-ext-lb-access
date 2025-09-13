@@ -23,6 +23,16 @@ variable "linux_vm_size" {
   description = "Linux Virtual Machine Size"
 }
 
+variable "linux_vm_admin_username" {
+  type        = string
+  description = "Linux Virtual Machine Admin Username"
+}
+
+variable "linux_vm_admin_password" {
+  type        = string
+  description = "Linux Virtual Machine Admin Password"
+}
+
 variable "publisher" {
   type        = string
   description = "VM Image Publisher"
@@ -38,7 +48,7 @@ variable "sku" {
   description = "VM Image SKU"
 }
 
-variable "version" {
+variable "image_version" {
   type        = string
   description = "VM Image version"
 }

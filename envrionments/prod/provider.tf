@@ -5,6 +5,13 @@ terraform {
       version = "4.22.0"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name  = "State-Management"
+    storage_account_name = "statemanagement434"
+    container_name       = "tfstate"
+    key                  = "prod/terraform.tfstate"
+  }
 }
 
 provider "azurerm" {

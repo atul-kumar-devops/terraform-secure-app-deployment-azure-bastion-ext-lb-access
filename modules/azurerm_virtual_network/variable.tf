@@ -1,4 +1,4 @@
-variable "vnet_name" {
+variable "virtual_network_name" {
   type        = string
   description = "Virtual Network Name"
 }
